@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+
+  <!-- =====================================================
+    index.html — Kebab Sultan
+    Ini adalah file UTAMA yang dibuka browser.
+    File ini hanya berisi STRUKTUR (HTML) saja.
+
+    Struktur Folder Proyek:
+    📁 kebab-sultan/
+    ├── 📄 index.html   ← file ini (struktur halaman)
+    ├── 📄 style.css    ← semua tampilan / desain
+    └── 📄 script.js    ← semua logika / interaktivitas
+  ===================================================== -->
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kebab Sultan - Outlet Kebab Terlezat</title>
+
+  <!-- =====================================================
+    MENGHUBUNGKAN FILE EKSTERNAL
+    Urutan link CSS sangat penting:
+    1. Bootstrap (framework) → harus pertama
+    2. Bootstrap Icons       → ikon dari Bootstrap
+    3. Google Fonts          → font dari internet
+    4. style.css             → CSS kita sendiri (terakhir,
+                               agar bisa menimpa Bootstrap)
+  ===================================================== -->
+
+  <!-- 1. Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- 2. Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+
+  <!-- 3. Google Fonts (Playfair Display + Lato) -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- 4. CSS kita sendiri (harus paling terakhir!) -->
+  <link rel="stylesheet" href="Styles.css">
+
+</head>
+
+<body>
+
+  <!-- =====================================================
+    NAVBAR — Menu Navigasi Atas
+    Bootstrap class yang dipakai:
+    • navbar           → komponen navbar Bootstrap
+    • navbar-expand-lg → menu penuh di layar besar (lg = ≥992px)
+    • container        → membatasi lebar konten & memusatkannya
+    • navbar-toggler   → tombol hamburger ☰ di HP
+    • navbar-collapse  → area menu yang bisa dilipat/dibuka
+    • ms-auto          → margin-start: auto (dorong ke kanan)
+  ===================================================== -->
+  <nav class="navbar navbar-expand-lg navbar-custom">
+    <div class="container">
+
+      <!-- Logo / Nama Brand -->
+      <a class="navbar-brand navbar-brand-text" href="#">
+        🥙 Kebab <span>Kota Raja</span>
+      </a>
+
+      <!-- Tombol Hamburger (hanya muncul di HP) -->
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarMenu"
+        aria-controls="navbarMenu"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+        style="border-color: rgba(255,255,255,0.3);"
+      >
+        <span class="navbar-toggler-icon" style="filter: invert(1);"></span>
+      </button>
+
+      <!-- Daftar Menu Navigasi -->
+      <div class="collapse navbar-collapse" id="navbarMenu">
+        <ul class="navbar-nav ms-auto gap-1">
+          <li class="nav-item">
+            <a class="nav-link nav-link-custom" href="#tentang">Tentang Kami</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link nav-link-custom" href="#menu">Menu</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link nav-link-custom" href="#keunggulan">Keunggulan</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link nav-link-custom" href="#kontak">Kontak</a>
+          </li>
+          <li class="nav-item ms-2">
+            <a class="btn-pesan" href="cabang.html" style="font-size:0.9rem; padding:10px 22px;">
+              <i class="bi bi-bag-fill me-1"></i> Pesan Sekarang
+            </a>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+  </nav>
+
+
+  <!-- =====================================================
+    HERO SECTION — Banner Utama
+    Bootstrap class yang dipakai:
+    • row              → baris dalam grid system (12 kolom)
+    • col-lg-6         → elemen mengambil 6/12 kolom di layar besar
+    • align-items-center → isi baris rata tengah vertikal
+    • mt-5 mt-lg-0     → margin-top di HP, tapi nol di desktop
+    • d-flex flex-wrap → flex container, item bisa turun baris
+    • gap-2            → jarak antar item flex
+  ===================================================== -->
+  <section class="hero-section">
+    <div class="container">
+      <div class="row align-items-center">
+
+        <!-- Kolom Kiri: Teks Utama -->
+        <div class="col-lg-6">
+          <span class="hero-badge">🔥 Buka Setiap Hari 15.00 - 23.00</span>
+
+          <h1 class="hero-title">
+            Rasa <span class="highlight">Autentik</span><br>
+            Kebab Timur<br>
+            Tengah
+          </h1>
+
+          <p class="hero-desc">
+            Nikmati cita rasa kebab asli dengan daging segar pilihan,
+            bumbu rempah rahasia turun-temurun, dan saus spesial yang
+            bikin ketagihan. Tersedia berbagai pilihan menu untuk semua selera!
+          </p>
+
+          <div class="d-flex flex-wrap gap-2">
+            <a href="cabang.html" class="btn-pesan">
+              <i class="bi bi-bag-fill me-2"></i>Pesan Sekarang
+            </a>
+            <a href="#menu" class="btn-lihat-menu">
+              Lihat Menu <i class="bi bi-arrow-down ms-1"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Kolom Kanan: Gambar / Emoji Kebab -->
+        <div class="col-lg-6 text-center mt-5 mt-lg-0">
+          <div class="hero-image-placeholder">🥙</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- =====================================================
+    STATISTIK SECTION
+    Bootstrap class: row, col-6, col-md-3
+    → 2 kolom di HP (col-6 = 6/12)
+    → 4 kolom di tablet ke atas (col-md-3 = 3/12)
+  ===================================================== -->
+  <section class="stats-section">
+    <div class="container">
+      <div class="row text-center">
+
+        <div class="col-6 col-md-3">
+          <div class="stat-item">
+            <span class="stat-number">500+</span>
+            <span class="stat-label">Pelanggan/Hari</span>
+          </div>
+        </div>
+
+        <div class="col-6 col-md-3">
+          <div class="stat-item">
+            <span class="stat-number">15+</span>
+            <span class="stat-label">Menu Pilihan</span>
+          </div>
+        </div>
+
+        <div class="col-6 col-md-3">
+          <div class="stat-item">
+            <span class="stat-number">5⭐</span>
+            <span class="stat-label">Rating Google</span>
+          </div>
+        </div>
+
+        <div class="col-6 col-md-3">
+          <div class="stat-item">
+            <span class="stat-number">8+</span>
+            <span class="stat-label">Tahun Berpengalaman</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- =====================================================
+    TENTANG KAMI SECTION
+    Bootstrap class: g-5 (gap antar kolom), offset-lg-*
+  ===================================================== -->
+  <section class="tentang-section" id="tentang">
+    <div class="container">
+      <div class="row g-5 align-items-center">
+
+        <!-- Kolom Kiri: Gambar Dekoratif -->
+        <div class="col-lg-5">
+          <div class="tentang-img-box">
+            🥙
+            <div class="badge-tahun">
+              <div style="font-size:2rem;">8+</div>
+              <div style="font-size:0.75rem; font-family:'Lato',sans-serif; font-weight:700;">TAHUN<br>PENGALAMAN</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Kolom Kanan: Informasi Teks -->
+        <div class="col-lg-7">
+          <span class="section-label">Tentang Kami</span>
+          <h2 class="section-title">
+            Kebab Lezat dengan<br>Bahan Pilihan Terbaik
+          </h2>
+          <div class="garis-merah"></div>
+
+          <p class="tentang-desc">
+            <strong>Kebab Sultan</strong> berdiri sejak 2016 dengan misi sederhana:
+            menghadirkan kebab autentik berkualitas tinggi dengan harga yang terjangkau.
+            Kami menggunakan daging sapi pilihan yang dimarinasi dengan bumbu rempah
+            asli Timur Tengah selama 24 jam.
+          </p>
+          <p class="tentang-desc">
+            Setiap kebab kami dibuat fresh to order — tidak ada yang dipanaskan ulang.
+            Saus spesial kami dibuat setiap hari dari bahan alami tanpa pengawet.
+          </p>
+
+          <div class="info-box">
+            <strong><i class="bi bi-clock-fill text-danger me-2"></i>Jam Buka:</strong><br>
+            <span>Senin - Minggu: 15.00 - 23.00 WIB</span>
+          </div>
+          <div class="info-box">
+            <strong><i class="bi bi-geo-alt-fill text-danger me-2"></i>Lokasi:</strong><br>
+            <span>Jl. Sejati (Depan Kedai Mantan), Samarinda</span>
+          </div>
+          <div class="info-box">
+            <strong><i class="bi bi-telephone-fill text-danger me-2"></i>Telepon / WhatsApp:</strong><br>
+            <span>0812-3456-7890</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- =====================================================
+    MENU SECTION
+    Bootstrap class: col-md-6 col-lg-4
+    → 1 kolom di HP (default)
+    → 2 kolom di tablet (col-md-6 = 6/12)
+    → 3 kolom di desktop (col-lg-4 = 4/12)
+  ===================================================== -->
+  <section class="menu-section" id="menu">
+    <div class="container">
+
+      <!-- Judul Section -->
+      <div class="text-center mb-5">
+        <span class="section-label">Menu Kami</span>
+        <h2 class="section-title">Pilihan Menu<br>Yang Menggugah Selera</h2>
+        <div class="garis-merah mx-auto"></div>
+      </div>
+
+      <!-- Grid Kartu Menu -->
+      <div class="row g-4">
+
+        <!-- Kartu 1: Kebab Original -->
+        <div class="col-md-6 col-lg-4">
+          <div class="menu-card card h-100">
+            <div class="menu-img-area">
+              🥙
+              <span class="badge-populer">⭐ Best Seller</span>
+            </div>
+            <div class="menu-card-body">
+              <h5 class="menu-nama">Kebab Original Sultan</h5>
+              <p class="menu-desc">
+                Daging sapi pilihan, sayuran segar, saus garlic spesial,
+                dibungkus roti pita hangat yang renyah.
+              </p>
+              <div class="d-flex justify-content-between align-items-center">
+                <span class="menu-harga">Rp 25.000</span>
+                <a href="https://wa.me/62812345678?text=Saya mau pesan Kebab Original Sultan"
+                   class="btn btn-sm btn-danger rounded-pill">Pesan</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Kartu 2: Kebab Ayam -->
+        <div class="col-md-6 col-lg-4">
+          <div class="menu-card card h-100">
+            <div class="menu-img-area" style="background: linear-gradient(135deg, #1a3a1a, #27ae60);">
+              🌯
+            </div>
+            <div class="menu-card-body">
+              <h5 class="menu-nama">Kebab Ayam Bakar</h5>
+              <p class="menu-desc">
+                Potongan ayam bakar marinasi madu, selada, tomat segar,
+                dan saus BBQ spesial rumahan.
+              </p>
+              <div class="d-flex justify-content-between align-items-center">
+                <span class="menu-harga">Rp 22.000</span>
+                <a href="https://wa.me/62812345678?text=Saya mau pesan Kebab Ayam Bakar"
+                   class="btn btn-sm btn-danger rounded-pill">Pesan</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Kartu 3: Kebab Double Beef -->
+        <div class="col-md-6 col-lg-4">
+          <div class="menu-card card h-100">
+            <div class="menu-img-area" style="background: linear-gradient(135deg, #1a1a3a, #8e44ad);">
+              🌮
+              <span class="badge-populer">🆕 Baru!</span>
+            </div>
+            <div class="menu-card-body">
+              <h5 class="menu-nama">Kebab Double Beef</h5>
+              <p class="menu-desc">
+                Porsi jumbo! Dua lapis daging sapi, keju leleh,
+                saus thousand island, dan jalapeno pedas.
+              </p>
+              <div class="d-flex justify-content-between align-items-center">
+                <span class="menu-harga">Rp 35.000</span>
+                <a href="https://wa.me/62812345678?text=Saya mau pesan Kebab Double Beef"
+                   class="btn btn-sm btn-danger rounded-pill">Pesan</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Kartu 4: Paket Kombo -->
+        <div class="col-md-6 col-lg-4">
+          <div class="menu-card card h-100">
+            <div class="menu-img-area" style="background: linear-gradient(135deg, #2d1b0e, #e67e22);">
+              🍟
+            </div>
+            <div class="menu-card-body">
+              <h5 class="menu-nama">Paket Kebab + Kentang</h5>
+              <p class="menu-desc">
+                Kebab original + kentang goreng crispy seasoning
+                + minuman pilihan. Hemat dan kenyang!
+              </p>
+              <div class="d-flex justify-content-between align-items-center">
+                <span class="menu-harga">Rp 35.000</span>
+                <a href="https://wa.me/62812345678?text=Saya mau pesan Paket Kebab+Kentang"
+                   class="btn btn-sm btn-danger rounded-pill">Pesan</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Kartu 5: Veggie -->
+        <div class="col-md-6 col-lg-4">
+          <div class="menu-card card h-100">
+            <div class="menu-img-area" style="background: linear-gradient(135deg, #0e2d2d, #16a085);">
+              🥗
+            </div>
+            <div class="menu-card-body">
+              <h5 class="menu-nama">Kebab Veggie Special</h5>
+              <p class="menu-desc">
+                Pilihan sehat! Sayuran panggang, hummus, keju feta,
+                dan saus tzatziki segar tanpa daging.
+              </p>
+              <div class="d-flex justify-content-between align-items-center">
+                <span class="menu-harga">Rp 20.000</span>
+                <a href="https://wa.me/62812345678?text=Saya mau pesan Kebab Veggie Special"
+                   class="btn btn-sm btn-danger rounded-pill">Pesan</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Kartu 6: Spicy -->
+        <div class="col-md-6 col-lg-4">
+          <div class="menu-card card h-100">
+            <div class="menu-img-area" style="background: linear-gradient(135deg, #2d0e0e, #c0392b);">
+              🌶️
+              <span class="badge-populer">🔥 Pedas!</span>
+            </div>
+            <div class="menu-card-body">
+              <h5 class="menu-nama">Kebab Sultan Spicy</h5>
+              <p class="menu-desc">
+                Buat pecinta pedas! Daging sapi + sambal matah +
+                saus sriracha + cabai rawit segar. Berani coba?
+              </p>
+              <div class="d-flex justify-content-between align-items-center">
+                <span class="menu-harga">Rp 27.000</span>
+                <a href="https://wa.me/62812345678?text=Saya mau pesan Kebab Sultan Spicy"
+                   class="btn btn-sm btn-danger rounded-pill">Pesan</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /row -->
+    </div>
+  </section>
+
+
+  <!-- =====================================================
+    KEUNGGULAN SECTION
+  ===================================================== -->
+  <section class="keunggulan-section" id="keunggulan">
+    <div class="container">
+
+      <div class="text-center mb-5">
+        <span class="section-label" style="color: var(--warna-emas);">Kenapa Pilih Kami</span>
+        <h2 class="section-title" style="color: white;">Keunggulan Kebab Sultan</h2>
+        <div class="garis-merah mx-auto"></div>
+      </div>
+
+      <div class="row g-3">
+
+        <div class="col-6 col-md-3">
+          <div class="keunggulan-item">
+            <div class="keunggulan-icon"><i class="bi bi-award-fill"></i></div>
+            <h5 class="keunggulan-judul">Bahan Premium</h5>
+            <p class="keunggulan-desc">Daging sapi pilihan grade A, dimarinasi bumbu rempah asli.</p>
+          </div>
+        </div>
+
+        <div class="col-6 col-md-3">
+          <div class="keunggulan-item">
+            <div class="keunggulan-icon"><i class="bi bi-lightning-fill"></i></div>
+            <h5 class="keunggulan-judul">Proses Cepat</h5>
+            <p class="keunggulan-desc">Kebab siap dalam 5 menit. Fresh to order, tidak dipanaskan ulang.</p>
+          </div>
+        </div>
+
+        <div class="col-6 col-md-3">
+          <div class="keunggulan-item">
+            <div class="keunggulan-icon"><i class="bi bi-shield-check-fill"></i></div>
+            <h5 class="keunggulan-judul">Halal Certified</h5>
+            <p class="keunggulan-desc">Semua bahan sudah bersertifikat halal MUI. Aman untuk keluarga.</p>
+          </div>
+        </div>
+
+        <div class="col-6 col-md-3">
+          <div class="keunggulan-item">
+            <div class="keunggulan-icon"><i class="bi bi-truck"></i></div>
+            <h5 class="keunggulan-judul">Pesan Antar</h5>
+            <p class="keunggulan-desc">Tersedia di GoFood, GrabFood, dan ShopeeFood. Antar ke rumahmu!</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- =====================================================
+    KONTAK SECTION
+    Bootstrap class pada form:
+    • form-label    → label input
+    • form-control  → styling input/textarea Bootstrap
+    • mb-3          → margin bawah
+    • fw-semibold   → font-weight semi-bold
+  ===================================================== -->
+  <section class="kontak-section" id="kontak">
+    <div class="container">
+
+      <div class="text-center mb-5">
+        <span class="section-label">Hubungi Kami</span>
+        <h2 class="section-title">Ada Pertanyaan?<br>Kami Siap Membantu!</h2>
+        <div class="garis-merah mx-auto"></div>
+      </div>
+
+      <div class="row g-4">
+
+        <!-- Kolom Kiri: Info Kontak -->
+        <div class="col-lg-5">
+          <div class="row g-3">
+
+            <div class="col-12">
+              <div class="kontak-card">
+                <div class="kontak-icon"><i class="bi bi-geo-alt-fill"></i></div>
+                <div class="kontak-label">Alamat</div>
+                <div class="kontak-value">
+                  Jl. Raya Kebab No. 88,<br>
+                  Kel. Lezat, Kec. Nikmat,<br>
+                  Jakarta Selatan 12345
+                </div>
+              </div>
+            </div>
+
+            <div class="col-6">
+              <div class="kontak-card">
+                <div class="kontak-icon"><i class="bi bi-telephone-fill"></i></div>
+                <div class="kontak-label">Telepon</div>
+                <div class="kontak-value">0812-3456-7890</div>
+              </div>
+            </div>
+
+            <div class="col-6">
+              <div class="kontak-card">
+                <div class="kontak-icon" style="background-color: #25D366;">
+                  <i class="bi bi-whatsapp"></i>
+                </div>
+                <div class="kontak-label">WhatsApp</div>
+                <div class="kontak-value">0812-3456-7890</div>
+              </div>
+            </div>
+
+            <div class="col-12">
+              <div class="kontak-card">
+                <div class="kontak-icon" style="background-color: #E1306C;">
+                  <i class="bi bi-instagram"></i>
+                </div>
+                <div class="kontak-label">Instagram</div>
+                <div class="kontak-value">@kebabsultan.id</div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Kolom Kanan: Form Kirim Pesan -->
+        <div class="col-lg-7">
+          <div class="kontak-card">
+            <h5 class="fw-bold mb-4">Kirim Pesan</h5>
+
+            <form>
+              <div class="row g-3">
+
+                <div class="col-md-6">
+                  <label class="form-label fw-semibold" for="nama">Nama</label>
+                  <input type="text" class="form-control form-control-custom"
+                         id="nama" placeholder="Nama lengkap kamu">
+                </div>
+
+                <div class="col-md-6">
+                  <label class="form-label fw-semibold" for="hp">No. HP / WhatsApp</label>
+                  <input type="tel" class="form-control form-control-custom"
+                         id="hp" placeholder="08xx-xxxx-xxxx">
+                </div>
+
+                <div class="col-12">
+                  <label class="form-label fw-semibold" for="email">Email</label>
+                  <input type="email" class="form-control form-control-custom"
+                         id="email" placeholder="email@kamu.com">
+                </div>
+
+                <div class="col-12">
+                  <label class="form-label fw-semibold" for="pesan">Pesan</label>
+                  <textarea class="form-control form-control-custom"
+                            id="pesan" rows="4"
+                            placeholder="Tulis pesanan atau pertanyaanmu di sini..."></textarea>
+                </div>
+
+                <div class="col-12">
+                  <button type="submit" class="btn-kirim">
+                    <i class="bi bi-send-fill me-2"></i>Kirim Pesan via WhatsApp
+                  </button>
+                </div>
+
+              </div>
+            </form>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- =====================================================
+    FOOTER
+  ===================================================== -->
+  <footer>
+    <div class="container">
+      <div class="row g-4">
+
+        <!-- Kolom 1: Brand & Sosmed -->
+        <div class="col-lg-4">
+          <div class="footer-brand">🥙 Kebab <span>Sultan</span></div>
+          <p class="footer-desc">
+            Outlet kebab terpercaya sejak 2016. Menghadirkan cita rasa
+            autentik Timur Tengah dengan bahan premium pilihan untuk
+            seluruh keluarga Indonesia.
+          </p>
+          <div class="footer-sosmed">
+            <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+            <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+            <a href="#" aria-label="TikTok"><i class="bi bi-tiktok"></i></a>
+            <a href="#" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a>
+          </div>
+        </div>
+
+        <!-- Kolom 2: Link Cepat -->
+        <div class="col-6 col-lg-2 offset-lg-1">
+          <h6 class="footer-judul">Navigasi</h6>
+          <ul class="footer-list">
+            <li><a href="#tentang">Tentang Kami</a></li>
+            <li><a href="#menu">Daftar Menu</a></li>
+            <li><a href="#keunggulan">Keunggulan</a></li>
+            <li><a href="#kontak">Kontak</a></li>
+          </ul>
+        </div>
+
+        <!-- Kolom 3: Platform Pesan -->
+        <div class="col-6 col-lg-2">
+          <h6 class="footer-judul">Pesan Via</h6>
+          <ul class="footer-list">
+            <li><a href="#">GoFood</a></li>
+            <li><a href="#">GrabFood</a></li>
+            <li><a href="#">ShopeeFood</a></li>
+            <li><a href="#">WhatsApp</a></li>
+          </ul>
+        </div>
+
+        <!-- Kolom 4: Jam Buka -->
+        <div class="col-lg-3">
+          <h6 class="footer-judul">Jam Operasional</h6>
+          <p style="font-size: 0.9rem; line-height: 2;">
+            <i class="bi bi-clock me-2 text-danger"></i>Senin – Jumat: 15.00 – 23.00<br>
+            <i class="bi bi-clock me-2 text-danger"></i>Sabtu – Minggu: 15.00 – 00.00<br>
+            <i class="bi bi-info-circle me-2 text-warning"></i>Libur nasional: Tetap buka
+          </p>
+        </div>
+
+      </div>
+
+      <!-- Garis & Copyright -->
+      <div class="footer-bottom">
+        <p>© 2024 Kebab Sultan. All Rights Reserved. | Dibuat dengan ❤️ menggunakan HTML + CSS + Bootstrap</p>
+      </div>
+
+    </div>
+  </footer>
+
+
+  <!-- =====================================================
+    MENGHUBUNGKAN FILE JAVASCRIPT
+    Letakkan script di BAWAH </body> agar halaman
+    selesai dimuat sebelum JavaScript dijalankan.
+
+    Urutan:
+    1. Bootstrap JS (wajib untuk komponen interaktif)
+    2. script.js milik kita sendiri (terakhir)
+  ===================================================== -->
+
+  <!-- 1. Bootstrap JS (untuk navbar toggle, dll) -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- 2. JavaScript kita sendiri -->
+  <script src="Script.js"></script>
+
+</body>
+</html>

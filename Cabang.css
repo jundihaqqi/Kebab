@@ -1,0 +1,581 @@
+/* ============================================================
+   cabang.css — Halaman Pemesanan Kebab Sultan
+   Style khusus untuk alur: Pilih Cabang → Menu → WA
+============================================================ */
+
+
+/* ============================================================
+   1. BREADCRUMB / STEP INDICATOR
+      Menampilkan progress: langkah 1 → 2 → 3
+============================================================ */
+.breadcrumb-bar {
+  background-color : #fff;
+  border-bottom    : 1px solid #e9ecef;
+  padding          : 18px 0;
+  position         : sticky;
+  top              : 70px; /* di bawah navbar */
+  z-index          : 998;
+  box-shadow       : 0 2px 10px rgba(0,0,0,0.05);
+}
+
+/* Baris step */
+.step-flow {
+  display         : flex;
+  align-items     : center;
+  justify-content : center;
+  gap             : 0;
+}
+
+/* Satu item step (lingkaran + label) */
+.step-item {
+  display        : flex;
+  flex-direction : column;
+  align-items    : center;
+  gap            : 6px;
+}
+
+/* Lingkaran angka */
+.step-circle {
+  width            : 38px;
+  height           : 38px;
+  border-radius    : 50%;
+  background-color : #dee2e6;  /* abu = belum aktif */
+  color            : #6c757d;
+  font-weight      : 700;
+  font-size        : 0.95rem;
+  display          : flex;
+  align-items      : center;
+  justify-content  : center;
+  transition       : all 0.4s ease;
+}
+
+/* Label teks di bawah lingkaran */
+.step-label {
+  font-size   : 0.78rem;
+  font-weight : 700;
+  color       : #6c757d;
+  white-space : nowrap;
+  transition  : color 0.4s ease;
+}
+
+/* Garis penghubung antar step */
+.step-connector {
+  width            : 80px;
+  height           : 3px;
+  background-color : #dee2e6;
+  margin           : 0 8px;
+  margin-bottom    : 24px; /* turunkan agar sejajar lingkaran */
+  transition       : background-color 0.4s ease;
+}
+
+/* State AKTIF — step yang sedang dikunjungi */
+.step-item.active .step-circle {
+  background-color : var(--warna-utama);
+  color            : white;
+  box-shadow       : 0 4px 12px rgba(192,57,43,0.4);
+}
+
+.step-item.active .step-label {
+  color : var(--warna-utama);
+}
+
+/* State SELESAI — step yang sudah dilalui */
+.step-item.selesai .step-circle {
+  background-color : #27ae60;
+  color            : white;
+}
+
+.step-item.selesai .step-label {
+  color : #27ae60;
+}
+
+/* Garis penghubung aktif */
+.step-connector.aktif {
+  background-color : #27ae60;
+}
+
+
+/* ============================================================
+   2. MAIN CONTENT AREA
+============================================================ */
+.pesan-main {
+  min-height     : 70vh;
+  padding        : 50px 0 80px;
+  background-color: var(--warna-krim);
+}
+
+.page-header {
+  margin-bottom : 40px;
+}
+
+.page-desc {
+  color     : var(--warna-abu);
+  font-size : 1rem;
+  margin-top: 10px;
+}
+
+
+/* ============================================================
+   3. KARTU CABANG
+============================================================ */
+.cabang-card {
+  background-color : white;
+  border-radius    : 16px;
+  overflow         : hidden;
+  cursor           : pointer;
+  transition       : transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow       : 0 4px 20px rgba(0,0,0,0.07);
+  border           : 2px solid transparent;
+}
+
+.cabang-card:hover {
+  transform    : translateY(-6px);
+  box-shadow   : 0 16px 40px rgba(0,0,0,0.13);
+  border-color : var(--warna-utama);
+}
+
+/* Header berwarna (gambar / emoji) */
+.cabang-header {
+  height          : 120px;
+  display         : flex;
+  align-items     : center;
+  justify-content : center;
+  position        : relative;
+}
+
+.cabang-emoji {
+  font-size : 3.5rem;
+}
+
+/* Badge status buka/tutup di pojok */
+.cabang-badge-status {
+  position      : absolute;
+  top           : 12px;
+  right         : 12px;
+  font-size     : 0.72rem;
+  font-weight   : 700;
+  padding       : 4px 10px;
+  border-radius : 50px;
+  letter-spacing: 0.3px;
+}
+
+.cabang-badge-status.buka {
+  background-color : #d4edda;
+  color            : #155724;
+}
+
+.cabang-badge-status.tutup {
+  background-color : #fff3cd;
+  color            : #856404;
+}
+
+.cabang-body {
+  padding : 20px;
+}
+
+.cabang-nama {
+  font-family   : 'Playfair Display', serif;
+  font-size     : 1.1rem;
+  font-weight   : 700;
+  margin-bottom : 8px;
+  color         : var(--warna-gelap);
+}
+
+.cabang-alamat {
+  color         : var(--warna-abu);
+  font-size     : 0.88rem;
+  margin-bottom : 12px;
+  line-height   : 1.5;
+}
+
+.cabang-info-row {
+  display         : flex;
+  justify-content : space-between;
+  font-size       : 0.82rem;
+  color           : var(--warna-abu);
+  margin-bottom   : 16px;
+  flex-wrap       : wrap;
+  gap             : 6px;
+}
+
+.btn-pilih-cabang {
+  width            : 100%;
+  background-color : var(--warna-utama);
+  color            : white;
+  border           : none;
+  padding          : 10px;
+  border-radius    : 10px;
+  font-weight      : 700;
+  font-size        : 0.9rem;
+  transition       : all 0.3s ease;
+  cursor           : pointer;
+}
+
+.btn-pilih-cabang:hover {
+  background-color : #a93226;
+  transform        : translateY(-1px);
+}
+
+
+/* ============================================================
+   4. BAR CABANG TERPILIH (di atas halaman menu)
+============================================================ */
+.cabang-terpilih-bar {
+  background-color : #fff3cd;
+  border           : 1px solid #ffc107;
+  border-radius    : 12px;
+  padding          : 12px 20px;
+  display          : flex;
+  justify-content  : space-between;
+  align-items      : center;
+  margin-bottom    : 35px;
+  flex-wrap        : wrap;
+  gap              : 10px;
+  font-size        : 0.95rem;
+}
+
+.btn-ganti-cabang {
+  background-color : transparent;
+  border           : 2px solid var(--warna-utama);
+  color            : var(--warna-utama);
+  padding          : 6px 16px;
+  border-radius    : 8px;
+  font-size        : 0.85rem;
+  font-weight      : 700;
+  cursor           : pointer;
+  transition       : all 0.3s ease;
+}
+
+.btn-ganti-cabang:hover {
+  background-color : var(--warna-utama);
+  color            : white;
+}
+
+
+/* ============================================================
+   5. KARTU MENU (di halaman pemesanan)
+      Sama dengan menu-card di style.css tapi ada qty control
+============================================================ */
+.menu-card-pesan {
+  background-color : white;
+  border           : 2px solid transparent;
+  border-radius    : 16px;
+  overflow         : hidden;
+  transition       : all 0.3s ease;
+  box-shadow       : 0 4px 20px rgba(0,0,0,0.06);
+}
+
+.menu-card-pesan.dipilih {
+  border-color : var(--warna-utama);
+  box-shadow   : 0 8px 30px rgba(192,57,43,0.15);
+}
+
+/* Kontrol qty: tombol − angka + */
+.qty-control {
+  display     : flex;
+  align-items : center;
+  gap         : 8px;
+}
+
+.qty-btn {
+  width            : 32px;
+  height           : 32px;
+  border-radius    : 8px;
+  border           : 2px solid #dee2e6;
+  background-color : white;
+  font-size        : 1.2rem;
+  font-weight      : 700;
+  color            : var(--warna-abu);
+  cursor           : pointer;
+  transition       : all 0.2s ease;
+  display          : flex;
+  align-items      : center;
+  justify-content  : center;
+  line-height      : 1;
+}
+
+.qty-btn:hover {
+  border-color     : var(--warna-utama);
+  color            : var(--warna-utama);
+}
+
+/* Tombol + berwarna merah saat qty > 0 */
+.qty-btn.tambah.aktif {
+  background-color : var(--warna-utama);
+  border-color     : var(--warna-utama);
+  color            : white;
+}
+
+.qty-angka {
+  font-weight : 700;
+  font-size   : 1.1rem;
+  min-width   : 24px;
+  text-align  : center;
+  color       : var(--warna-gelap);
+}
+
+/* Angka berwarna merah saat > 0 */
+.qty-angka.ada-item {
+  color : var(--warna-utama);
+}
+
+
+/* ============================================================
+   6. RINGKASAN PESANAN (floating box di bawah menu)
+============================================================ */
+.ringkasan-box {
+  background-color : white;
+  border-radius    : 16px;
+  overflow         : hidden;
+  box-shadow       : 0 8px 30px rgba(0,0,0,0.1);
+  margin-top       : 40px;
+  border           : 2px solid var(--warna-utama);
+}
+
+.ringkasan-header {
+  background-color : var(--warna-utama);
+  color            : white;
+  padding          : 14px 20px;
+  font-weight      : 700;
+  font-size        : 1rem;
+}
+
+.ringkasan-body {
+  padding : 20px;
+}
+
+.ringkasan-item {
+  display         : flex;
+  justify-content : space-between;
+  padding         : 8px 0;
+  border-bottom   : 1px solid #f0f0f0;
+  font-size       : 0.95rem;
+}
+
+.ringkasan-item:last-of-type {
+  border-bottom : none;
+}
+
+.ringkasan-total {
+  display         : flex;
+  justify-content : space-between;
+  align-items     : center;
+  padding-top     : 15px;
+  margin-top      : 10px;
+  border-top      : 2px solid var(--warna-krim);
+  font-weight     : 700;
+  font-size       : 1rem;
+}
+
+.total-harga {
+  color       : var(--warna-utama);
+  font-size   : 1.2rem;
+  font-weight : 900;
+  font-family : 'Playfair Display', serif;
+}
+
+
+/* ============================================================
+   7. TOMBOL LANJUT KE WA
+============================================================ */
+.btn-lanjut-wa {
+  background-color : #25D366; /* warna hijau WhatsApp */
+  color            : white;
+  border           : none;
+  padding          : 15px 40px;
+  border-radius    : 50px;
+  font-size        : 1.05rem;
+  font-weight      : 700;
+  cursor           : pointer;
+  transition       : all 0.3s ease;
+  box-shadow       : 0 4px 20px rgba(37,211,102,0.4);
+  display          : inline-flex;
+  align-items      : center;
+  gap              : 8px;
+}
+
+.btn-lanjut-wa:hover:not(:disabled) {
+  background-color : #1ebe5d;
+  transform        : translateY(-3px);
+  box-shadow       : 0 8px 30px rgba(37,211,102,0.5);
+}
+
+/* Tombol disabled (belum ada item dipilih) */
+.btn-lanjut-wa:disabled {
+  background-color : #a8e6c1;
+  cursor           : not-allowed;
+  box-shadow       : none;
+}
+
+.total-badge {
+  background-color : rgba(0,0,0,0.2);
+  padding          : 2px 10px;
+  border-radius    : 50px;
+  font-size        : 0.8rem;
+}
+
+.hint-text {
+  color     : var(--warna-abu);
+  font-size : 0.88rem;
+}
+
+
+/* ============================================================
+   8. HALAMAN KONFIRMASI
+============================================================ */
+.konfirmasi-box {
+  background-color : white;
+  border-radius    : 16px;
+  overflow         : hidden;
+  box-shadow       : 0 8px 30px rgba(0,0,0,0.08);
+}
+
+.konfirmasi-section {
+  padding       : 20px 25px;
+  border-bottom : 1px solid #f0f0f0;
+}
+
+.konfirmasi-section:last-of-type {
+  border-bottom : none;
+}
+
+.konfirmasi-section-label {
+  font-size      : 0.8rem;
+  font-weight    : 700;
+  color          : var(--warna-abu);
+  text-transform : uppercase;
+  letter-spacing : 1px;
+  margin-bottom  : 8px;
+  color          : var(--warna-utama);
+}
+
+.konfirmasi-value {
+  font-weight : 700;
+  font-size   : 1rem;
+  color       : var(--warna-gelap);
+}
+
+.konfirmasi-menu-item {
+  display         : flex;
+  justify-content : space-between;
+  align-items     : center;
+  padding         : 8px 0;
+  border-bottom   : 1px dashed #f0f0f0;
+  font-size       : 0.95rem;
+}
+
+.konfirmasi-menu-item:last-child {
+  border-bottom : none;
+}
+
+.konfirmasi-total {
+  background-color : var(--warna-krim);
+  padding          : 20px 25px;
+  display          : flex;
+  justify-content  : space-between;
+  align-items      : center;
+  font-weight      : 700;
+  font-size        : 1rem;
+}
+
+.total-harga-besar {
+  color       : var(--warna-utama);
+  font-size   : 1.5rem;
+  font-weight : 900;
+  font-family : 'Playfair Display', serif;
+}
+
+/* Tombol aksi di halaman konfirmasi */
+.btn-kembali-menu {
+  flex             : 1;
+  background-color : transparent;
+  border           : 2px solid #dee2e6;
+  color            : var(--warna-abu);
+  padding          : 14px;
+  border-radius    : 12px;
+  font-weight      : 700;
+  cursor           : pointer;
+  transition       : all 0.3s ease;
+}
+
+.btn-kembali-menu:hover {
+  border-color : var(--warna-utama);
+  color        : var(--warna-utama);
+}
+
+.btn-kirim-wa {
+  flex             : 2;
+  background-color : #25D366;
+  color            : white;
+  border           : none;
+  padding          : 14px;
+  border-radius    : 12px;
+  font-size        : 1rem;
+  font-weight      : 700;
+  cursor           : pointer;
+  transition       : all 0.3s ease;
+  box-shadow       : 0 4px 20px rgba(37,211,102,0.4);
+}
+
+.btn-kirim-wa:hover {
+  background-color : #1ebe5d;
+  transform        : translateY(-2px);
+}
+
+
+/* ============================================================
+   9. FOOTER MINI
+============================================================ */
+.footer-mini {
+  background-color : var(--warna-gelap);
+  color            : rgba(255,255,255,0.6);
+  padding          : 20px 0;
+  font-size        : 0.88rem;
+}
+
+.footer-mini strong {
+  color : white;
+}
+
+/* Tombol Pesan aktif di navbar */
+.active-pesan {
+  background-color : var(--warna-emas) !important;
+  color            : var(--warna-gelap) !important;
+}
+
+
+/* ============================================================
+   10. ANIMASI TRANSISI ANTAR HALAMAN
+============================================================ */
+.fade-masuk {
+  animation : fadeIn 0.4s ease forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0);    }
+}
+
+
+/* ============================================================
+   11. RESPONSIVE
+============================================================ */
+@media (max-width: 576px) {
+  .step-connector { width: 40px; }
+  .step-label     { font-size: 0.7rem; }
+
+  .btn-lanjut-wa {
+    padding   : 13px 25px;
+    font-size : 0.95rem;
+  }
+
+  .d-flex.gap-3 {
+    flex-direction : column;
+  }
+
+  .btn-kembali-menu,
+  .btn-kirim-wa {
+    flex : unset;
+    width: 100%;
+  }
+}

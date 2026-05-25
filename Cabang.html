@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pesan Kebab Kota Raja - Pilih Cabang</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="Styles.css">
+  <link rel="stylesheet" href="Cabang.css">
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg navbar-custom">
+    <div class="container">
+      <a class="navbar-brand navbar-brand-text" href="Kebab.html">
+        🥙 Kebab <span>Kota Raja</span>
+      </a>
+      <button class="navbar-toggler" type="button"
+        data-bs-toggle="collapse" data-bs-target="#navbarMenu"
+        style="border-color: rgba(255,255,255,0.3);">
+        <span class="navbar-toggler-icon" style="filter:invert(1);"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarMenu">
+        <ul class="navbar-nav ms-auto gap-1">
+          <li class="nav-item"><a class="nav-link nav-link-custom" href="Kebab.html#tentang">Tentang Kami</a></li>
+          <li class="nav-item"><a class="nav-link nav-link-custom" href="Kebab.html#menu">Menu</a></li>
+          <li class="nav-item"><a class="nav-link nav-link-custom" href="Kebab.html#kontak">Kontak</a></li>
+          <li class="nav-item ms-2">
+            <a class="btn-pesan active-pesan" href="Cabang.html" style="font-size:0.9rem;padding:10px 22px;">
+              <i class="bi bi-bag-fill me-1"></i> Pesan Sekarang
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+
+  <!-- BREADCRUMB -->
+  <div class="breadcrumb-bar">
+    <div class="container">
+      <div class="step-flow">
+        <div class="step-item active" id="step-1">
+          <div class="step-circle">1</div>
+          <span class="step-label">Pilih Cabang</span>
+        </div>
+        <div class="step-connector" id="conn-1"></div>
+        <div class="step-item" id="step-2">
+          <div class="step-circle">2</div>
+          <span class="step-label">Pilih Menu</span>
+        </div>
+        <div class="step-connector" id="conn-2"></div>
+        <div class="step-item" id="step-3">
+          <div class="step-circle">3</div>
+          <span class="step-label">Pesan via WA</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- MAIN CONTENT -->
+  <main class="pesan-main">
+    <div class="container">
+
+
+      <!-- HALAMAN 1: PILIH CABANG -->
+      <div id="halaman-cabang">
+
+        <div class="page-header text-center">
+          <span class="section-label">Langkah 1 dari 3</span>
+          <h2 class="section-title">Pilih Cabang Terdekat</h2>
+          <div class="garis-merah mx-auto"></div>
+          <p class="page-desc">Pilih cabang Kebab Kota Raja Samarinda yang paling dekat dengan lokasimu</p>
+        </div>
+
+        <div class="row g-4 justify-content-center">
+
+          <!-- Cabang 1: Bung Tomo -->
+          <div class="col-md-6 col-lg-4">
+            <div class="cabang-card" onclick="pilihCabang('bungtomo')">
+              <div class="cabang-header" style="background: linear-gradient(135deg,#1a1a1a,#C0392B);">
+                <div class="cabang-emoji">📍</div>
+                <span class="cabang-badge-status buka">Buka Sekarang</span>
+              </div>
+              <div class="cabang-body">
+                <h5 class="cabang-nama">Cabang Samarinda — Bung Tomo</h5>
+                <p class="cabang-alamat">
+                  <i class="bi bi-geo-alt-fill text-danger me-1"></i>
+                  Jl. Bung Tomo (Tb. Perkakas Shop), Samarinda
+                </p>
+                <div class="cabang-info-row">
+                  <span><i class="bi bi-clock me-1"></i>10.00 – 22.00</span>
+                  <span><i class="bi bi-telephone me-1"></i>0811-111-1111</span>
+                </div>
+                <button class="btn-pilih-cabang">
+                  Pilih Cabang Ini <i class="bi bi-arrow-right ms-1"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Cabang 2: Pattimura -->
+          <div class="col-md-6 col-lg-4">
+            <div class="cabang-card" onclick="pilihCabang('pattimura')">
+              <div class="cabang-header" style="background: linear-gradient(135deg,#0e2d2d,#16a085);">
+                <div class="cabang-emoji">📍</div>
+                <span class="cabang-badge-status buka">Buka Sekarang</span>
+              </div>
+              <div class="cabang-body">
+                <h5 class="cabang-nama">Cabang Samarinda — Pattimura</h5>
+                <p class="cabang-alamat">
+                  <i class="bi bi-geo-alt-fill text-danger me-1"></i>
+                  Jl. Pattimura (Seberang Kantor Samsat), Samarinda
+                </p>
+                <div class="cabang-info-row">
+                  <span><i class="bi bi-clock me-1"></i>10.00 – 22.00</span>
+                  <span><i class="bi bi-telephone me-1"></i>0822-222-2222</span>
+                </div>
+                <button class="btn-pilih-cabang">
+                  Pilih Cabang Ini <i class="bi bi-arrow-right ms-1"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Cabang 3: Soekarno Hatta -->
+          <div class="col-md-6 col-lg-4">
+            <div class="cabang-card" onclick="pilihCabang('soekarnohatta')">
+              <div class="cabang-header" style="background: linear-gradient(135deg,#1a1a3a,#8e44ad);">
+                <div class="cabang-emoji">📍</div>
+                <span class="cabang-badge-status buka">Buka Sekarang</span>
+              </div>
+              <div class="cabang-body">
+                <h5 class="cabang-nama">Cabang Samarinda — Loa Janan Ilir</h5>
+                <p class="cabang-alamat">
+                  <i class="bi bi-geo-alt-fill text-danger me-1"></i>
+                  Jl. Soekarno Hatta KM 1, Loa Janan Ilir, Samarinda
+                </p>
+                <div class="cabang-info-row">
+                  <span><i class="bi bi-clock me-1"></i>10.00 – 22.00</span>
+                  <span><i class="bi bi-telephone me-1"></i>0833-333-3333</span>
+                </div>
+                <button class="btn-pilih-cabang">
+                  Pilih Cabang Ini <i class="bi bi-arrow-right ms-1"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Cabang 4: Sejati -->
+          <div class="col-md-6 col-lg-4">
+            <div class="cabang-card" onclick="pilihCabang('sejati')">
+              <div class="cabang-header" style="background: linear-gradient(135deg,#2d1b0e,#e67e22);">
+                <div class="cabang-emoji">📍</div>
+                <span class="cabang-badge-status buka">Buka Sekarang</span>
+              </div>
+              <div class="cabang-body">
+                <h5 class="cabang-nama">Cabang Samarinda — Sejati</h5>
+                <p class="cabang-alamat">
+                  <i class="bi bi-geo-alt-fill text-danger me-1"></i>
+                  Jl. Sejati (Depan Kedai Mantan), Samarinda
+                </p>
+                <div class="cabang-info-row">
+                  <span><i class="bi bi-clock me-1"></i>10.00 – 22.00</span>
+                  <span><i class="bi bi-telephone me-1"></i>0844-444-4444</span>
+                </div>
+                <button class="btn-pilih-cabang">
+                  Pilih Cabang Ini <i class="bi bi-arrow-right ms-1"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Cabang 5: Makroman -->
+          <div class="col-md-6 col-lg-4">
+            <div class="cabang-card" onclick="pilihCabang('makroman')">
+              <div class="cabang-header" style="background: linear-gradient(135deg,#2d0e0e,#c0392b);">
+                <div class="cabang-emoji">📍</div>
+                <span class="cabang-badge-status buka">Buka Sekarang</span>
+              </div>
+              <div class="cabang-body">
+                <h5 class="cabang-nama">Cabang Samarinda — Makroman</h5>
+                <p class="cabang-alamat">
+                  <i class="bi bi-geo-alt-fill text-danger me-1"></i>
+                  Jl. Makroman (Seberang Alfamidi), Samarinda
+                </p>
+                <div class="cabang-info-row">
+                  <span><i class="bi bi-clock me-1"></i>10.00 – 22.00</span>
+                  <span><i class="bi bi-telephone me-1"></i>0855-555-5555</span>
+                </div>
+                <button class="btn-pilih-cabang">
+                  Pilih Cabang Ini <i class="bi bi-arrow-right ms-1"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+
+        </div><!-- /row -->
+      </div><!-- /halaman-cabang -->
+
+
+      <!-- HALAMAN 2: PILIH MENU -->
+      <div id="halaman-menu" class="d-none">
+
+        <div class="cabang-terpilih-bar">
+          <div class="d-flex align-items-center gap-2">
+            <i class="bi bi-geo-alt-fill text-danger"></i>
+            <span>Cabang: <strong id="nama-cabang-terpilih">-</strong></span>
+          </div>
+          <button class="btn-ganti-cabang" onclick="gantiCabang()">
+            <i class="bi bi-arrow-left me-1"></i> Ganti Cabang
+          </button>
+        </div>
+
+        <div class="page-header text-center">
+          <span class="section-label">Langkah 2 dari 3</span>
+          <h2 class="section-title">Pilih Menu Favoritmu</h2>
+          <div class="garis-merah mx-auto"></div>
+          <p class="page-desc">Tambahkan menu yang kamu inginkan, lalu klik "Lanjut Pesan"</p>
+        </div>
+
+        <div class="row g-4">
+
+          <div class="col-md-6 col-lg-4">
+            <div class="menu-card-pesan card h-100">
+              <div class="menu-img-area">
+                🥙
+                <span class="badge-populer">⭐ Best Seller</span>
+              </div>
+              <div class="menu-card-body">
+                <h5 class="menu-nama">Kebab Original Sultan</h5>
+                <p class="menu-desc">Daging sapi pilihan, sayuran segar, saus garlic spesial.</p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <span class="menu-harga">Rp 25.000</span>
+                  <div class="qty-control">
+                    <button class="qty-btn" onclick="ubahQty(this, -1)">−</button>
+                    <span class="qty-angka">0</span>
+                    <button class="qty-btn tambah" onclick="ubahQty(this, 1)">+</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-4">
+            <div class="menu-card-pesan card h-100">
+              <div class="menu-img-area" style="background:linear-gradient(135deg,#1a3a1a,#27ae60);">
+                🌯
+              </div>
+              <div class="menu-card-body">
+                <h5 class="menu-nama">Kebab Ayam Bakar</h5>
+                <p class="menu-desc">Ayam bakar marinasi madu, selada, tomat, saus BBQ.</p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <span class="menu-harga">Rp 22.000</span>
+                  <div class="qty-control">
+                    <button class="qty-btn" onclick="ubahQty(this, -1)">−</button>
+                    <span class="qty-angka">0</span>
+                    <button class="qty-btn tambah" onclick="ubahQty(this, 1)">+</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-4">
+            <div class="menu-card-pesan card h-100">
+              <div class="menu-img-area" style="background:linear-gradient(135deg,#1a1a3a,#8e44ad);">
+                🌮
+                <span class="badge-populer">🆕 Baru!</span>
+              </div>
+              <div class="menu-card-body">
+                <h5 class="menu-nama">Kebab Double Beef</h5>
+                <p class="menu-desc">Porsi jumbo, dua lapis daging sapi, keju leleh.</p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <span class="menu-harga">Rp 35.000</span>
+                  <div class="qty-control">
+                    <button class="qty-btn" onclick="ubahQty(this, -1)">−</button>
+                    <span class="qty-angka">0</span>
+                    <button class="qty-btn tambah" onclick="ubahQty(this, 1)">+</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-4">
+            <div class="menu-card-pesan card h-100">
+              <div class="menu-img-area" style="background:linear-gradient(135deg,#2d1b0e,#e67e22);">
+                🍟
+              </div>
+              <div class="menu-card-body">
+                <h5 class="menu-nama">Paket Kebab + Kentang</h5>
+                <p class="menu-desc">Kebab original + kentang crispy + minuman pilihan.</p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <span class="menu-harga">Rp 35.000</span>
+                  <div class="qty-control">
+                    <button class="qty-btn" onclick="ubahQty(this, -1)">−</button>
+                    <span class="qty-angka">0</span>
+                    <button class="qty-btn tambah" onclick="ubahQty(this, 1)">+</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-4">
+            <div class="menu-card-pesan card h-100">
+              <div class="menu-img-area" style="background:linear-gradient(135deg,#0e2d2d,#16a085);">
+                🥗
+              </div>
+              <div class="menu-card-body">
+                <h5 class="menu-nama">Kebab Veggie Special</h5>
+                <p class="menu-desc">Sayuran panggang, hummus, keju feta, saus tzatziki.</p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <span class="menu-harga">Rp 20.000</span>
+                  <div class="qty-control">
+                    <button class="qty-btn" onclick="ubahQty(this, -1)">−</button>
+                    <span class="qty-angka">0</span>
+                    <button class="qty-btn tambah" onclick="ubahQty(this, 1)">+</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-4">
+            <div class="menu-card-pesan card h-100">
+              <div class="menu-img-area" style="background:linear-gradient(135deg,#2d0e0e,#c0392b);">
+                🌶️
+                <span class="badge-populer">🔥 Pedas!</span>
+              </div>
+              <div class="menu-card-body">
+                <h5 class="menu-nama">Kebab Sultan Spicy</h5>
+                <p class="menu-desc">Sambal matah + sriracha + cabai rawit segar.</p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <span class="menu-harga">Rp 27.000</span>
+                  <div class="qty-control">
+                    <button class="qty-btn" onclick="ubahQty(this, -1)">−</button>
+                    <span class="qty-angka">0</span>
+                    <button class="qty-btn tambah" onclick="ubahQty(this, 1)">+</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div><!-- /row menu -->
+
+        <div class="ringkasan-box d-none" id="ringkasan-box">
+          <div class="ringkasan-header">
+            <i class="bi bi-cart-fill me-2"></i>Ringkasan Pesanan
+          </div>
+          <div class="ringkasan-body">
+            <div id="ringkasan-isi"></div>
+            <div class="ringkasan-total">
+              <span>Total:</span>
+              <span id="ringkasan-total-harga" class="total-harga">Rp 0</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="text-center mt-4">
+          <button class="btn-lanjut-wa" id="btn-lanjut-wa" onclick="lanjutKeWA()" disabled>
+            <i class="bi bi-whatsapp me-2"></i>
+            Lanjut Pesan via WhatsApp
+            <span id="total-item-badge" class="total-badge">0 item</span>
+          </button>
+          <p class="hint-text mt-2" id="hint-pilih-menu">
+            <i class="bi bi-info-circle me-1"></i>Pilih minimal 1 menu untuk melanjutkan
+          </p>
+        </div>
+
+      </div><!-- /halaman-menu -->
+
+
+      <!-- HALAMAN 3: KONFIRMASI -->
+      <div id="halaman-konfirmasi" class="d-none">
+
+        <div class="page-header text-center">
+          <span class="section-label">Langkah 3 dari 3</span>
+          <h2 class="section-title">Konfirmasi Pesanan</h2>
+          <div class="garis-merah mx-auto"></div>
+          <p class="page-desc">Cek pesananmu sebelum dikirim ke WhatsApp cabang</p>
+        </div>
+
+        <div class="row justify-content-center">
+          <div class="col-lg-7">
+
+            <div class="konfirmasi-box">
+
+              <div class="konfirmasi-section">
+                <div class="konfirmasi-section-label">
+                  <i class="bi bi-geo-alt-fill me-2"></i>Cabang Tujuan
+                </div>
+                <div class="konfirmasi-value" id="konfirmasi-cabang"></div>
+              </div>
+
+              <div class="konfirmasi-section">
+                <div class="konfirmasi-section-label">
+                  <i class="bi bi-bag-fill me-2"></i>Menu yang Dipesan
+                </div>
+                <div id="konfirmasi-menu-list"></div>
+              </div>
+
+              <div class="konfirmasi-total">
+                <span>Total Pembayaran</span>
+                <span id="konfirmasi-total" class="total-harga-besar"></span>
+              </div>
+
+              <div class="konfirmasi-section">
+                <div class="konfirmasi-section-label">
+                  <i class="bi bi-pencil-fill me-2"></i>Catatan Tambahan (opsional)
+                </div>
+                <textarea
+                  id="catatan-pesan"
+                  class="form-control form-control-custom mt-2"
+                  rows="3"
+                  placeholder="Contoh: tidak pakai bawang, tambah saus, dll..."
+                ></textarea>
+              </div>
+
+            </div>
+
+            <div class="d-flex gap-3 mt-4">
+              <button class="btn-kembali-menu" onclick="kembaliKeMenu()">
+                <i class="bi bi-arrow-left me-1"></i> Edit Pesanan
+              </button>
+              <button class="btn-kirim-wa" onclick="kirimKeWA()">
+                <i class="bi bi-whatsapp me-2"></i> Kirim ke WhatsApp Cabang
+              </button>
+            </div>
+
+          </div>
+        </div>
+
+      </div><!-- /halaman-konfirmasi -->
+
+
+    </div><!-- /container -->
+  </main>
+
+
+  <!-- FOOTER MINI -->
+  <footer class="footer-mini">
+    <div class="container text-center">
+      <p>© 2024 <strong>Kebab Kota Raja</strong> — Semua cabang Samarinda beroperasi di bawah manajemen yang sama.</p>
+    </div>
+  </footer>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="Cabang.js"></script>
+
+</body>
+</html>

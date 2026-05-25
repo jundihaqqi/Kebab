@@ -1,0 +1,639 @@
+/* ============================================================
+   style.css — Kebab Sultan
+   File ini berisi SEMUA style / tampilan website
+   
+   CARA KERJA CSS:
+   selector { property: value; }
+      ↑           ↑         ↑
+   elemen yg   apa yg    nilainya
+   ditarget    diubah
+   ============================================================ */
+
+
+/* ============================================================
+   1. CSS VARIABLES (Variabel Warna & Font)
+      Simpan nilai yang sering dipakai di satu tempat.
+      Cara pakai: var(--nama-variabel)
+   ============================================================ */
+:root {
+  --warna-utama : #C0392B;   /* merah kebab → warna dominan */
+  --warna-gelap : #1a1a1a;   /* hitam pekat → background gelap & teks */
+  --warna-emas  : #D4A017;   /* emas         → aksen / highlight */
+  --warna-krim  : #FDF6EC;   /* krem lembut  → background terang */
+  --warna-abu   : #6c757d;   /* abu          → teks sekunder */
+}
+
+
+/* ============================================================
+   2. RESET & BASE STYLE
+      Hilangkan margin/padding bawaan browser agar konsisten.
+   ============================================================ */
+* {
+  margin     : 0;
+  padding    : 0;
+  box-sizing : border-box; /* lebar elemen sudah termasuk padding & border */
+}
+
+body {
+  font-family      : 'Lato', sans-serif;
+  background-color : var(--warna-krim);
+  color            : var(--warna-gelap);
+}
+
+
+/* ============================================================
+   3. NAVBAR
+      Bootstrap sudah menyediakan class navbar, kita tinggal
+      override (timpa) beberapa style di sini.
+   ============================================================ */
+.navbar-custom {
+  background-color : var(--warna-gelap);
+  padding          : 15px 0;
+  position         : sticky; /* tetap menempel di atas saat scroll */
+  top              : 0;
+  z-index          : 999;    /* selalu tampil di depan semua elemen */
+  box-shadow       : 0 2px 20px rgba(0, 0, 0, 0.3);
+}
+
+.navbar-brand-text {
+  font-family    : 'Playfair Display', serif;
+  font-size      : 1.8rem;
+  font-weight    : 900;
+  color          : white !important;
+  letter-spacing : 1px;
+}
+
+/* Kata "Sultan" di brand berwarna emas */
+.navbar-brand-text span {
+  color : var(--warna-emas);
+}
+
+.nav-link-custom {
+  color          : rgba(255, 255, 255, 0.85) !important;
+  font-weight    : 700;
+  letter-spacing : 0.5px;
+  padding        : 8px 15px !important;
+  transition     : color 0.3s ease; /* animasi smooth saat hover */
+}
+
+.nav-link-custom:hover {
+  color : var(--warna-emas) !important;
+}
+
+
+/* ============================================================
+   4. HERO SECTION (Banner Utama)
+      Section pertama yang langsung dilihat pengunjung.
+      Berisi: badge, judul besar, deskripsi, tombol CTA.
+   ============================================================ */
+.hero-section {
+  /* linear-gradient: warna gradasi dari sudut kiri-atas ke kanan-bawah */
+  background : linear-gradient(135deg, #1a1a1a 0%, #2d1b0e 50%, #C0392B 100%);
+  min-height : 90vh;          /* minimal setinggi 90% layar */
+  display    : flex;
+  align-items: center;        /* konten rata tengah secara vertikal */
+  position   : relative;
+  overflow   : hidden;
+}
+
+/* Lingkaran cahaya dekoratif di background (menggunakan ::before pseudo-element) */
+.hero-section::before {
+  content       : '';
+  position      : absolute;
+  top           : -50%;
+  right         : -10%;
+  width         : 600px;
+  height        : 600px;
+  background    : radial-gradient(circle, rgba(192, 57, 43, 0.2) 0%, transparent 70%);
+  border-radius : 50%;
+}
+
+.hero-badge {
+  background-color : var(--warna-emas);
+  color            : var(--warna-gelap);
+  font-size        : 0.85rem;
+  font-weight      : 700;
+  padding          : 6px 16px;
+  border-radius    : 50px;
+  display          : inline-block;
+  margin-bottom    : 20px;
+  letter-spacing   : 1px;
+  text-transform   : uppercase;
+}
+
+.hero-title {
+  font-family   : 'Playfair Display', serif;
+  /* clamp(min, ideal, max) = ukuran font responsif */
+  font-size     : clamp(3rem, 7vw, 5.5rem);
+  font-weight   : 900;
+  color         : white;
+  line-height   : 1.1;
+  margin-bottom : 20px;
+}
+
+.hero-title .highlight {
+  color : var(--warna-emas);
+}
+
+.hero-desc {
+  color         : rgba(255, 255, 255, 0.75);
+  font-size     : 1.15rem;
+  line-height   : 1.7;
+  margin-bottom : 35px;
+  max-width     : 500px;
+}
+
+/* ---- Tombol CTA ---- */
+.btn-pesan {
+  background-color : var(--warna-utama);
+  color            : white;
+  border           : none;
+  padding          : 14px 35px;
+  font-size        : 1rem;
+  font-weight      : 700;
+  border-radius    : 50px;
+  text-decoration  : none;
+  display          : inline-block;
+  transition       : all 0.3s ease;
+  box-shadow       : 0 4px 20px rgba(192, 57, 43, 0.5);
+}
+
+.btn-pesan:hover {
+  background-color : #a93226;
+  color            : white;
+  transform        : translateY(-3px); /* naik 3px saat hover */
+  box-shadow       : 0 8px 30px rgba(192, 57, 43, 0.6);
+}
+
+.btn-lihat-menu {
+  background-color : transparent;
+  color            : white;
+  border           : 2px solid rgba(255, 255, 255, 0.4);
+  padding          : 14px 35px;
+  font-size        : 1rem;
+  font-weight      : 700;
+  border-radius    : 50px;
+  text-decoration  : none;
+  display          : inline-block;
+  transition       : all 0.3s ease;
+  margin-left      : 15px;
+}
+
+.btn-lihat-menu:hover {
+  border-color : var(--warna-emas);
+  color        : var(--warna-emas);
+}
+
+/* ---- Emoji kebab mengambang ---- */
+.hero-image-placeholder {
+  font-size  : 12rem;
+  text-align : center;
+  filter     : drop-shadow(0 20px 40px rgba(0, 0, 0, 0.5));
+  /* animasi float didefinisikan di @keyframes di bawah */
+  animation  : float 3s ease-in-out infinite;
+}
+
+/* @keyframes = mendefinisikan urutan animasi CSS */
+@keyframes float {
+  0%, 100% { transform: translateY(0px);   } /* posisi awal & akhir */
+  50%       { transform: translateY(-20px); } /* posisi tengah (naik) */
+}
+
+
+/* ============================================================
+   5. STATISTIK SECTION
+   ============================================================ */
+.stats-section {
+  background-color : var(--warna-utama);
+  padding          : 40px 0;
+}
+
+.stat-item {
+  text-align : center;
+  color      : white;
+  padding    : 10px;
+}
+
+.stat-number {
+  font-family   : 'Playfair Display', serif;
+  font-size     : 2.8rem;
+  font-weight   : 900;
+  display       : block;
+}
+
+.stat-label {
+  font-size      : 0.9rem;
+  opacity        : 0.85;
+  text-transform : uppercase;
+  letter-spacing : 1px;
+}
+
+
+/* ============================================================
+   6. TENTANG KAMI SECTION
+   ============================================================ */
+.tentang-section {
+  padding          : 90px 0;
+  background-color : white;
+}
+
+/* Label kecil di atas judul section */
+.section-label {
+  color          : var(--warna-utama);
+  font-weight    : 700;
+  font-size      : 0.85rem;
+  letter-spacing : 2px;
+  text-transform : uppercase;
+  margin-bottom  : 12px;
+  display        : block;
+}
+
+.section-title {
+  font-family   : 'Playfair Display', serif;
+  font-size     : clamp(2rem, 4vw, 3rem);
+  font-weight   : 900;
+  line-height   : 1.2;
+  margin-bottom : 20px;
+}
+
+/* Garis merah dekoratif di bawah judul */
+.garis-merah {
+  width            : 60px;
+  height           : 4px;
+  background-color : var(--warna-utama);
+  margin-bottom    : 25px;
+}
+
+.tentang-desc {
+  color         : var(--warna-abu);
+  font-size     : 1rem;
+  line-height   : 1.8;
+  margin-bottom : 15px;
+}
+
+/* Kotak info (alamat, jam buka, dll) */
+.info-box {
+  background-color : var(--warna-krim);
+  border-left      : 4px solid var(--warna-utama); /* garis merah di kiri */
+  padding          : 15px 20px;
+  border-radius    : 0 8px 8px 0;
+  margin-bottom    : 12px;
+}
+
+.info-box strong {
+  color     : var(--warna-gelap);
+  font-size : 0.95rem;
+}
+
+.info-box span {
+  color     : var(--warna-abu);
+  font-size : 0.9rem;
+}
+
+/* Box gambar di kolom kiri tentang */
+.tentang-img-box {
+  background    : linear-gradient(135deg, #2d1b0e, var(--warna-utama));
+  border-radius : 20px;
+  height        : 400px;
+  display       : flex;
+  align-items   : center;
+  justify-content: center;
+  font-size     : 8rem;
+  box-shadow    : 20px 20px 60px rgba(0, 0, 0, 0.15);
+  position      : relative; /* agar badge-tahun bisa diposisikan absolute */
+}
+
+/* Badge "8+ Tahun" yang menempel di pojok */
+.badge-tahun {
+  position      : absolute;
+  bottom        : -20px;
+  right         : -20px;
+  background-color : var(--warna-emas);
+  color         : var(--warna-gelap);
+  padding       : 15px 20px;
+  border-radius : 12px;
+  font-family   : 'Playfair Display', serif;
+  font-weight   : 900;
+  text-align    : center;
+  box-shadow    : 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+
+/* ============================================================
+   7. MENU SECTION
+   ============================================================ */
+.menu-section {
+  padding          : 90px 0;
+  background-color : var(--warna-krim);
+}
+
+/* Card menu */
+.menu-card {
+  background-color : white;
+  border           : none; /* hapus border default Bootstrap card */
+  border-radius    : 16px;
+  overflow         : hidden;
+  transition       : transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow       : 0 4px 20px rgba(0, 0, 0, 0.06);
+}
+
+/* Kartu naik dan bayangan lebih gelap saat hover */
+.menu-card:hover {
+  transform  : translateY(-8px);
+  box-shadow : 0 16px 40px rgba(0, 0, 0, 0.12);
+}
+
+/* Area gambar / emoji di bagian atas card */
+.menu-img-area {
+  background : linear-gradient(135deg, #2d1b0e 0%, #C0392B 100%);
+  height     : 180px;
+  display    : flex;
+  align-items: center;
+  justify-content: center;
+  font-size  : 5rem;
+  position   : relative;
+}
+
+/* Badge "Best Seller" / "Baru!" di pojok gambar */
+.badge-populer {
+  position       : absolute;
+  top            : 12px;
+  right          : 12px;
+  background-color: var(--warna-emas);
+  color          : var(--warna-gelap);
+  font-size      : 0.7rem;
+  font-weight    : 700;
+  padding        : 4px 10px;
+  border-radius  : 50px;
+  text-transform : uppercase;
+  letter-spacing : 0.5px;
+}
+
+.menu-card-body {
+  padding : 20px;
+}
+
+.menu-nama {
+  font-family   : 'Playfair Display', serif;
+  font-size     : 1.2rem;
+  font-weight   : 700;
+  margin-bottom : 6px;
+}
+
+.menu-desc {
+  color         : var(--warna-abu);
+  font-size     : 0.88rem;
+  line-height   : 1.6;
+  margin-bottom : 15px;
+}
+
+.menu-harga {
+  color       : var(--warna-utama);
+  font-size   : 1.3rem;
+  font-weight : 700;
+  font-family : 'Playfair Display', serif;
+}
+
+
+/* ============================================================
+   8. KEUNGGULAN SECTION
+   ============================================================ */
+.keunggulan-section {
+  padding    : 90px 0;
+  background : linear-gradient(135deg, var(--warna-gelap) 0%, #2d1b0e 100%);
+  color      : white;
+}
+
+.keunggulan-item {
+  text-align : center;
+  padding    : 30px 20px;
+}
+
+.keunggulan-icon {
+  width            : 70px;
+  height           : 70px;
+  background-color : rgba(192, 57, 43, 0.2);
+  border           : 2px solid rgba(192, 57, 43, 0.5);
+  border-radius    : 50%;
+  display          : flex;
+  align-items      : center;
+  justify-content  : center;
+  margin           : 0 auto 20px;
+  font-size        : 1.8rem;
+  color            : var(--warna-emas);
+  transition       : all 0.3s ease;
+}
+
+/* Ikon berubah warna & membesar saat hover pada item-nya */
+.keunggulan-item:hover .keunggulan-icon {
+  background-color : var(--warna-utama);
+  border-color     : var(--warna-utama);
+  transform        : scale(1.1);
+}
+
+.keunggulan-judul {
+  font-family   : 'Playfair Display', serif;
+  font-size     : 1.2rem;
+  font-weight   : 700;
+  margin-bottom : 10px;
+}
+
+.keunggulan-desc {
+  color     : rgba(255, 255, 255, 0.65);
+  font-size : 0.9rem;
+  line-height: 1.7;
+}
+
+
+/* ============================================================
+   9. KONTAK SECTION
+   ============================================================ */
+.kontak-section {
+  padding          : 90px 0;
+  background-color : white;
+}
+
+.kontak-card {
+  background-color : var(--warna-krim);
+  border-radius    : 16px;
+  padding          : 30px;
+  height           : 100%;
+}
+
+.kontak-icon {
+  width            : 50px;
+  height           : 50px;
+  background-color : var(--warna-utama);
+  border-radius    : 12px;
+  display          : flex;
+  align-items      : center;
+  justify-content  : center;
+  font-size        : 1.3rem;
+  color            : white;
+  margin-bottom    : 15px;
+}
+
+.kontak-label {
+  font-size      : 0.8rem;
+  color          : var(--warna-abu);
+  text-transform : uppercase;
+  letter-spacing : 1px;
+  margin-bottom  : 6px;
+}
+
+.kontak-value {
+  font-weight : 700;
+  font-size   : 1rem;
+  color       : var(--warna-gelap);
+}
+
+/* Input form Bootstrap dengan styling custom */
+.form-control-custom {
+  border        : 2px solid #e9ecef;
+  border-radius : 10px;
+  padding       : 12px 16px;
+  font-size     : 0.95rem;
+  transition    : border-color 0.3s ease;
+}
+
+/* Border berubah merah saat input difokus (diklik) */
+.form-control-custom:focus {
+  border-color : var(--warna-utama);
+  box-shadow   : 0 0 0 3px rgba(192, 57, 43, 0.1);
+}
+
+.btn-kirim {
+  background-color : var(--warna-utama);
+  color            : white;
+  border           : none;
+  padding          : 13px 30px;
+  border-radius    : 10px;
+  font-weight      : 700;
+  width            : 100%; /* lebar penuh */
+  transition       : all 0.3s ease;
+  cursor           : pointer;
+}
+
+.btn-kirim:hover {
+  background-color : #a93226;
+  color            : white;
+  transform        : translateY(-2px);
+}
+
+
+/* ============================================================
+   10. FOOTER
+   ============================================================ */
+footer {
+  background-color : var(--warna-gelap);
+  color            : rgba(255, 255, 255, 0.7);
+  padding          : 50px 0 25px;
+}
+
+.footer-brand {
+  font-family   : 'Playfair Display', serif;
+  font-size     : 2rem;
+  font-weight   : 900;
+  color         : white;
+  margin-bottom : 12px;
+}
+
+.footer-brand span {
+  color : var(--warna-emas);
+}
+
+.footer-desc {
+  font-size     : 0.9rem;
+  line-height   : 1.7;
+  margin-bottom : 20px;
+}
+
+/* Ikon sosial media */
+.footer-sosmed a {
+  display         : inline-flex;
+  align-items     : center;
+  justify-content : center;
+  width           : 38px;
+  height          : 38px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius   : 8px;
+  color           : white;
+  text-decoration : none;
+  margin-right    : 8px;
+  transition      : background-color 0.3s ease;
+  font-size       : 1rem;
+}
+
+.footer-sosmed a:hover {
+  background-color : var(--warna-utama);
+}
+
+.footer-judul {
+  color         : white;
+  font-weight   : 700;
+  font-size     : 1rem;
+  margin-bottom : 20px;
+  position      : relative;
+  padding-bottom: 10px;
+}
+
+/* Garis emas pendek di bawah judul footer (menggunakan ::after) */
+.footer-judul::after {
+  content          : '';
+  position         : absolute;
+  bottom           : 0;
+  left             : 0;
+  width            : 30px;
+  height           : 2px;
+  background-color : var(--warna-emas);
+}
+
+.footer-list {
+  list-style : none;
+  padding    : 0;
+}
+
+.footer-list li {
+  margin-bottom : 10px;
+}
+
+.footer-list a {
+  color           : rgba(255, 255, 255, 0.65);
+  text-decoration : none;
+  font-size       : 0.9rem;
+  transition      : color 0.3s ease;
+}
+
+.footer-list a:hover {
+  color : var(--warna-emas);
+}
+
+.footer-bottom {
+  border-top  : 1px solid rgba(255, 255, 255, 0.1);
+  margin-top  : 40px;
+  padding-top : 20px;
+  text-align  : center;
+  font-size   : 0.85rem;
+}
+
+
+/* ============================================================
+   11. RESPONSIVE — Media Query
+       Mengatur tampilan untuk ukuran layar tertentu.
+       @media (max-width: 768px) = berlaku di layar HP
+   ============================================================ */
+@media (max-width: 768px) {
+  .hero-image-placeholder {
+    font-size : 7rem; /* emoji lebih kecil di HP */
+  }
+
+  .btn-lihat-menu {
+    margin-left : 0;
+    margin-top  : 15px; /* tombol pindah ke bawah di HP */
+  }
+
+  .badge-tahun {
+    right  : 0;
+    bottom : -30px;
+  }
+}
